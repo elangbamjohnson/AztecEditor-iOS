@@ -145,8 +145,44 @@ open class TextStorage: NSTextStorage {
 
     private func preprocessAttributesForInsertion(_ attributedString: NSAttributedString) -> NSAttributedString {
         let stringWithAttachments = preprocessAttachmentsForInsertion(attributedString)
+        let preprocessedString = preprocessHeadingsForInsertion(stringWithAttachments)
 
-        return stringWithAttachments
+        return preprocessedString
+    }
+
+    /// Preprocesses an attributed string that is missing a `headingRepresentation` attribute for insertion in the storage.
+    ///
+    /// - Important: This method adds the `headingRepresentation` attribute by searching for it in storage.  This may
+    ///         change in future versions.
+    ///
+    /// - Parameters:
+    ///     - attributedString: the string we need to preprocess.
+    ///
+    /// - Returns: the preprocessed string.
+    ///
+    fileprivate func preprocessHeadingsForInsertion(_ attributedString: NSAttributedString) -> NSAttributedString {
+        // Ref. https://github.com/wordpress-mobile/AztecEditor-iOS/pull/1334
+
+        guard textStore.length > 0, attributedString.length > 0 else {
+            return attributedString
+        }
+
+        // Get the attributes of the current string in storage.
+        let currentAttrs = attributes(at: 0, effectiveRange: nil)
+
+        guard
+            let header = currentAttrs[.headingRepresentation],
+            attributedString.attribute(.headingRepresentation, at: 0, effectiveRange: nil) == nil
+        else {
+            // Either the heading attribute wasn't present,
+            // or the attributed string already had it.
+            return attributedString
+        }
+
+        let finalString = NSMutableAttributedString(attributedString: attributedString)
+        finalString.addAttribute(.headingRepresentation, value: header, range: attributedString.rangeOfEntireString)
+
+        return finalString
     }
 
     /// Preprocesses an attributed string's attachments for insertion in the storage.
