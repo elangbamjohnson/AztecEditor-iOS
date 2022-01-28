@@ -547,7 +547,7 @@ open class TextView: UITextView {
     }
 
     @objc func handleShiftEnter(command: UIKeyCommand) {
-        insertText(String(.lineSeparator))
+        insertText(String(.paragraphSeparator))
     }
 
     @objc func handleShiftTab(command: UIKeyCommand) {
