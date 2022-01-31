@@ -1240,7 +1240,7 @@ open class TextView: UITextView {
         let previousRange = selectedRange
         let previousStyle = convertFromNSAttributedStringKeyDictionary(typingAttributes)
 
-        super.insertText(String(.paragraphSeparator))
+        super.insertText(String(.zeroWidthSpace))
 
         selectedRange = previousRange
         typingAttributes = convertToNSAttributedStringKeyDictionary(previousStyle)
