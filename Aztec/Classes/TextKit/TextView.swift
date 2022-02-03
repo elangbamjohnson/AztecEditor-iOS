@@ -178,6 +178,10 @@ open class TextView: UITextView {
     ///
     open var shouldNotifyOfNonUserChanges = true
 
+    /// If this is true the typing attributes will be recalculated when deleting backward
+    ///
+    open var shouldRecalculateTypingAttributesOnDeleteBackward = true
+
     // MARK: - Customizable Input VC
     
     private var customInputViewController: UIInputViewController?
@@ -738,7 +742,9 @@ open class TextView: UITextView {
         evaluateRemovalOfSingleLineParagraphAttributesAfterSelectionChange()
         ensureRemovalOfParagraphAttributesWhenPressingBackspaceAndEmptyingTheDocument()
         ensureCursorRedraw(afterEditing: deletedString.string)
-        recalculateTypingAttributes()
+        if shouldRecalculateTypingAttributesOnDeleteBackward {
+            recalculateTypingAttributes()
+        }
         notifyTextViewDidChange()
     }
 
@@ -1108,7 +1114,7 @@ open class TextView: UITextView {
         let isOlTagPresent = formatter.present(in: storage, at: range)
         let isLiTagPresent = liFormatter.present(in: storage, at: range)
 
-        if (!isOlTagPresent && isLiTagPresent) || (isOlTagPresent && !isLiTagPresent) {
+        if isOlTagPresent != isLiTagPresent {
             toggle(formatter: liFormatter, atRange: range)
         }
         forceRedrawCursorAfterDelay()
@@ -1129,7 +1135,7 @@ open class TextView: UITextView {
         let isOlTagPresent = formatter.present(in: storage, at: range)
         let isLiTagPresent = liFormatter.present(in: storage, at: range)
 
-        if (!isOlTagPresent && isLiTagPresent) || (isOlTagPresent && !isLiTagPresent) {
+        if isOlTagPresent != isLiTagPresent {
             toggle(formatter: liFormatter, atRange: range)
         }
         forceRedrawCursorAfterDelay()
