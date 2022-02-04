@@ -734,7 +734,9 @@ open class TextView: UITextView {
         if storage.length > 0 {
             deletedString = storage.attributedSubstring(from: deletionRange)
         }
-        
+        if selectedRange.location == 0 && attributedText.length == 1 {
+            selectedRange = NSRange(location: 0, length: 1)
+        }
         ensureRemovalOfParagraphStylesBeforeRemovingCharacter(at: selectedRange)
 
         super.deleteBackward()
