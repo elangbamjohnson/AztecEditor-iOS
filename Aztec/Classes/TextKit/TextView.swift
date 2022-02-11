@@ -862,6 +862,7 @@ open class TextView: UITextView {
         .header6: HeaderFormatter(headerLevel: .h6),
         .p: HTMLParagraphFormatter(),
         .code: CodeFormatter(),
+        .pre: PreFormatter(),
         .mark: MarkFormatter()
     ]
 

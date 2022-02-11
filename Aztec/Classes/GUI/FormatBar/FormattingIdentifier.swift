@@ -19,6 +19,7 @@ extension FormattingIdentifier {
     public static let blockquote = FormattingIdentifier("blockquote")
     public static let bold = FormattingIdentifier("bold")
     public static let code = FormattingIdentifier("code")
+    public static let pre = FormattingIdentifier("pre")
     public static let italic = FormattingIdentifier("italic")
     public static let media = FormattingIdentifier("media")
     public static let more = FormattingIdentifier("more")

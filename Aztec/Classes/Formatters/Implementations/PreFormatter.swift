@@ -39,15 +39,19 @@ open class PreFormatter: ParagraphAttributeFormatter {
     }
 
     func remove(from attributes: [NSAttributedString.Key: Any]) -> [NSAttributedString.Key: Any] {
-        guard let placeholderAttributes = placeholderAttributes else {
+
+        guard let paragraphStyle = attributes[.paragraphStyle] as? ParagraphStyle else {
             return attributes
         }
-
+        let newParagraphStyle = ParagraphStyle()
+        newParagraphStyle.setParagraphStyle(paragraphStyle)
+        newParagraphStyle.removeProperty(ofType: HTMLPre.self)
+        
         var resultingAttributes = attributes
-        for (key, value) in placeholderAttributes {
-            resultingAttributes[key] = value
-        }
-
+        resultingAttributes.removeValue(forKey: .font)
+        resultingAttributes[.paragraphStyle] = newParagraphStyle
+        resultingAttributes[.font] = FontProvider.shared.defaultFont
+        
         return resultingAttributes
     }
 

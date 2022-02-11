@@ -17,7 +17,7 @@ public class FontProvider {
     }()
 
     public lazy var defaultFont: UIFont = {
-        let baseFont = UIFont.systemFont(ofSize: 14)
+        let baseFont = UIFont.systemFont(ofSize: 17)
         let font: UIFont
         font = UIFontMetrics.default.scaledFont(for: baseFont)        
         return font
