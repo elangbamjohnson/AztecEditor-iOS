@@ -46,9 +46,10 @@ extension String {
     ///
     func isEndOfLine() -> Bool {
         return self == String(.carriageReturn)
-            || self == String(.lineSeparator)
-            || self == String(.lineFeed)
-            || self == String(.paragraphSeparator)
+        || self == String(.lineSeparator)
+        || self == String(.lineFeed)
+        || self == String(.paragraphSeparator)
+        || self == String(.zeroWidthSpace)
     }
 
     func isEndOfLine(after index: String.Index) -> Bool {
