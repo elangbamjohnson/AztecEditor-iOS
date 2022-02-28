@@ -1971,6 +1971,15 @@ private extension TextView {
     /// - Parameter input: the user's input.  This method must be called before the input is processed.
     ///
     func ensureRemovalOfParagraphAttributesWhenPressingEnterInAnEmptyParagraph(input: String) -> Bool {
+        let formatters: [AttributeFormatter] = [BlockquoteFormatter(),
+                                                PreFormatter(placeholderAttributes: self.defaultAttributes)]
+        let activeTypingAttributes = typingAttributes
+        let found = formatters.first { formatter in
+            return formatter.present(in: activeTypingAttributes)
+        }
+        guard found == nil else {
+            return false
+        }
         guard mustRemoveParagraphAttributesWhenPressingEnterInAnEmptyParagraph(input: input) else {
             return false
         }
