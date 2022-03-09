@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E8CE3EFE1F213AAA003254AB"
-               BuildableName = "Carthage Update"
-               BlueprintName = "Carthage Update"
-               ReferencedContainer = "container:Aztec.xcodeproj">
+               BlueprintIdentifier = "F1D360AC2092947500B4E7A5"
+               BuildableName = "WordPressEditor.framework"
+               BlueprintName = "WordPressEditor"
+               ReferencedContainer = "container:WordPressEditor.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,6 +28,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F1D360B52092947500B4E7A5"
+               BuildableName = "WordPressEditorTests.xctest"
+               BlueprintName = "WordPressEditorTests"
+               ReferencedContainer = "container:WordPressEditor.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -40,15 +50,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E8CE3EFE1F213AAA003254AB"
-            BuildableName = "Carthage Update"
-            BlueprintName = "Carthage Update"
-            ReferencedContainer = "container:Aztec.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -59,10 +60,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E8CE3EFE1F213AAA003254AB"
-            BuildableName = "Carthage Update"
-            BlueprintName = "Carthage Update"
-            ReferencedContainer = "container:Aztec.xcodeproj">
+            BlueprintIdentifier = "F1D360AC2092947500B4E7A5"
+            BuildableName = "WordPressEditor.framework"
+            BlueprintName = "WordPressEditor"
+            ReferencedContainer = "container:WordPressEditor.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
